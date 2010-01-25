@@ -1,0 +1,28 @@
+% Алгоритм возведения в целую степень x1^x2
+
+\begin{tikzpicture}[auto]
+    \node [cloud] (start) {\hbox{Начало($x_1$, $x_2$)}};
+
+    \node [block, below of=start, minimum width=3.0cm] (init) {\hbox{$pow = x_2$} \hbox{$result = 1$}};
+    \path [line] (start) -- (init);
+
+    \node [decision, below of=init] (loop_condition) {$pow=0$?};
+    \path [line] (init) -- (loop_condition);
+
+    \node [cloud, left of=loop_condition, node distance=3.5cm] (halt) {\hbox{Конец($result$)}};
+    \path [line] (loop_condition) -- node[near start, above] {да} (halt);
+
+    \node [decision, below of=loop_condition, node distance=3.0cm] (inloop_cond) {$pow \vdots 2$?};
+    \path [line] (loop_condition) -- node[near start, above]  {нет}(inloop_cond);
+
+    \node [block, below left of=inloop_cond, minimum width=4cm, node distance=3.0cm] (inloop_yes) {\hbox{$pow = pow/2$} \hbox{$result = 2 \cdot result$}};
+    \path [line] (inloop_cond) -| node[near start, above]  {да}(inloop_yes);
+
+    \node [block, below right of=inloop_cond, minimum width=4cm, node distance=3.0cm] (inloop_no) {\hbox{$pow = pow-1$} \hbox{$result = result \cdot x_1$}};
+    \path [line] (inloop_cond) -| node[near start, above]  {нет}(inloop_no);
+
+    % возвращаемся на условие цикла
+    \path[draw] (inloop_no.south) -- ++ (0, -0.5) coordinate (N2) -| coordinate (N1) (inloop_yes.south);
+    \draw ($ (N1) ! .5 ! (N2) $) -- ++ (0, -0.5) -| ($(inloop_no.east) + (0.7,0)$) [line] |- (loop_condition.east) ;
+
+\end{tikzpicture}
