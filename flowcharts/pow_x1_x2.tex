@@ -15,10 +15,10 @@
     \node [decision, below of=loop_condition, node distance=3.0cm] (inloop_cond) {$pow \vdots 2$?};
     \path [line] (loop_condition) -- node[near start, above]  {нет}(inloop_cond);
 
-    \node [block, below left of=inloop_cond, minimum width=4cm, node distance=3.0cm] (inloop_yes) {\hbox{$pow = pow/2$} \hbox{$result = 2 \cdot result$}};
+    \node [block, below left of=inloop_cond, minimum width=4.2cm, node distance=3.2cm] (inloop_yes) {\hbox{$pow = pow/2$} \hbox{$result = 2 \cdot result$}};
     \path [line] (inloop_cond) -| node[near start, above]  {да}(inloop_yes);
 
-    \node [block, below right of=inloop_cond, minimum width=4cm, node distance=3.0cm] (inloop_no) {\hbox{$pow = pow-1$} \hbox{$result = result \cdot x_1$}};
+    \node [block, below right of=inloop_cond, minimum width=4.2cm, node distance=3.2cm] (inloop_no) {\hbox{$pow = pow-1$} \hbox{$result = result \cdot x_1$}};
     \path [line] (inloop_cond) -| node[near start, above]  {нет}(inloop_no);
 
     % возвращаемся на условие цикла
