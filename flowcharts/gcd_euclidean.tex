@@ -1,0 +1,49 @@
+% Алгоритм Евклида нахождения НОД
+
+\begin{tikzpicture}[auto]
+    \node [cloud] (start) {\hbox{Начало($a$, $b$)}};
+
+    \node [decision, below of=start] (init) {$a>b$};
+    \path [line] (start) -- (init);
+
+    \node [decision, below of=init, node distance=3.5cm] (loop_condition) {$b=0$?};
+    \path [line] (init) -- node[near start, above] {да} (loop_condition);
+
+    \node [block, below left of=init] (init_no) {\hbox{$swap(a, b)$}};
+    \path [line] (init) -| node[near start, above] {нет} (init_no) |- (loop_condition);
+
+    \node [cloud, right of=loop_condition, node distance=3.5cm] (halt) {\hbox{Конец($a$)}};
+    \path [line] (loop_condition) -- node[near start, above] {да} (halt);
+
+    \node [block, below of=loop_condition, node distance=3.0cm, minimum width=3cm] (inloop) {\hbox{$a=b$} \hbox{$b = a \mod b$}};
+    \path [line] (loop_condition) -- node[near start, above]  {нет}(inloop) -- ($(inloop.west) + (-0.7, 0)$) |- (loop_condition.west);
+
+\end{tikzpicture}
+
+\small {
+Примечания:
+\begin{itemize}
+ \item $swap(a,b)$ --- поменять местами значения $a$ и $b$
+ \item $a \mod b$ --- остаток от деления $a$ на $b$
+\end{itemize}
+}
+
+\vspace{1cm}
+
+\begin{tabular}[c]{c|c|c|c}
+\textbf{№} & \textbf{действие} & $a$ & $b$ \\\hline
+1 & Начало & 21 & 28 \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\\hline
+  &        &   &   \\
+\end{tabular}
