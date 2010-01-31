@@ -1,0 +1,7 @@
+Алгоритм Евклида нахождения НОД:
+\begin{enumerate}
+ \item Если $a>b$ --- поменять их местами ($swap(a, b)$)
+ \item \label{gcd_euclidean_loop_cond} Если $b=0$ --- завершить. Результат равен $a$
+ \item Иначе $a = b$, а в $b$ записать отстаток от деления $a \mod b$
+ \item Перейти к шагу \ref{gcd_euclidean_loop_cond}
+\end{enumerate}

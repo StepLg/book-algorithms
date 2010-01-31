@@ -1,0 +1,11 @@
+Алгоритм возведения в степень $x_1^{x_2}$
+\begin{enumerate}
+ \item $result = 1$
+ \item \label{pow_x1_x2_binopt_loop_cond} Если $x_2=0$ тогда завершить. Результат --- $result$
+ \item Иначе:
+ \begin{enumerate}
+  \item Если $x$ делится на 2 ($x_2 \vdots 2$), тогда $x_2 = x_2 / 2$, $x_1 = x_1 \cdot x_1$
+  \item Иначе $x_2 = x_2 - 1$, $result = result \cdot x_1$
+ \end{enumerate}
+ \item Перейти к шагу \ref{pow_x1_x2_binopt_loop_cond}
+\end{enumerate}
