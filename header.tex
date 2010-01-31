@@ -29,3 +29,9 @@
 \tikzstyle{line} = [draw, -latex']
 \tikzstyle{cloud} = [draw, ellipse,
     minimum height=2em, node distance = 2.0cm]
+
+% устанавливаем формат нумерации enumerate-списков (нумерованных списков)
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\theenumii}{.\arabic{enumii}}
