@@ -3,22 +3,22 @@
 \begin{tikzpicture}[auto]
     \node [cloud] (start) {\hbox{Начало($x_1$, $x_2$)}};
 
-    \node [block, below of=start, minimum width=3.0cm] (init) {\hbox{$pow = x_2$} \hbox{$result = 1$}};
+    \node [block, below of=start, minimum width=3.0cm] (init) {\hbox{$result = 1$}};
     \path [line] (start) -- (init);
 
-    \node [decision, below of=init] (loop_condition) {$pow=0$?};
+    \node [decision, below of=init] (loop_condition) {$x_2=0$?};
     \path [line] (init) -- (loop_condition);
 
     \node [cloud, left of=loop_condition, node distance=3.5cm] (halt) {\hbox{Конец($result$)}};
     \path [line] (loop_condition) -- node[near start, above] {да} (halt);
 
-    \node [decision, below of=loop_condition, node distance=3.0cm] (inloop_cond) {$pow \vdots 2$?};
+    \node [decision, below of=loop_condition, node distance=3.0cm] (inloop_cond) {$x_2 \vdots 2$?};
     \path [line] (loop_condition) -- node[near start, above]  {нет}(inloop_cond);
 
-    \node [block, below left of=inloop_cond, minimum width=4.2cm, node distance=3.2cm] (inloop_yes) {\hbox{$pow = pow/2$} \hbox{$result = 2 \cdot result$}};
+    \node [block, below left of=inloop_cond, minimum width=4.2cm, node distance=3.2cm] (inloop_yes) {\hbox{$x_2 = x_2/2$} \hbox{$x_1 = x_1*x_1$}};
     \path [line] (inloop_cond) -| node[near start, above]  {да}(inloop_yes);
 
-    \node [block, below right of=inloop_cond, minimum width=4.2cm, node distance=3.2cm] (inloop_no) {\hbox{$pow = pow-1$} \hbox{$result = result \cdot x_1$}};
+    \node [block, below right of=inloop_cond, minimum width=4.2cm, node distance=3.2cm] (inloop_no) {\hbox{$x_2 = x_2-1$} \hbox{$result = result \cdot x_1$}};
     \path [line] (inloop_cond) -| node[near start, above]  {нет}(inloop_no);
 
     % возвращаемся на условие цикла
@@ -30,7 +30,7 @@
 \vspace{1cm}
 
 \begin{tabular}[c]{c|c|c|c|c|c}
-\textbf{№} & \textbf{действие} & $x_1$ & $x_2$ & \textbf{$pow$} & \textbf{$result$}\\\hline
+\textbf{№} & \textbf{действие} & $x_1$ & $x_2$ & \textbf{$result$}\\\hline
 1 & Начало & 4 & 3 & & \\\hline
   &        &   &   & & \\\hline
   &        &   &   & & \\\hline
