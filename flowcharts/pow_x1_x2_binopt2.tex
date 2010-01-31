@@ -1,0 +1,50 @@
+\begin{tikzpicture}[auto]
+    \node [cloud] (start) {\hbox{Начало($t$, $k$)}};
+
+    \node [block, below of=start, minimum width=3.0cm] (init) {\hbox{$res = 1$}};
+    \path [line] (start) -- (init);
+
+    \node [decision, below of=init] (loop_condition) {$k=0$?};
+    \path [line] (init) -- (loop_condition);
+
+    \node [cloud, right of=loop_condition, node distance=3.5cm] (halt) {\hbox{Конец($res$)}};
+    \path [line] (loop_condition) -- node[near start, above] {да} (halt);
+
+    \node [decision, below of=loop_condition, node distance=3.0cm] (inloop_cond) {$k \vdots 2$?};
+    \path [line] (loop_condition) -- node[near start, above]  {нет}(inloop_cond);
+
+    \node [block, below of=inloop_cond, minimum width=3cm, node distance=4cm] (inloop_yes) {\hbox{$t = t \cdot t$} \hbox{$k=k \div 2$}};
+    \path [line] (inloop_cond) -- node[near start, above]  {да}(inloop_yes);
+
+    \node [block, below right of=inloop_cond, minimum width=3cm, node distance=3.2cm] (inloop_no) {\hbox{$res = res \cdot t$}};
+    \path [line] (inloop_cond) -| node[near start, above]  {нет}(inloop_no);
+    \path [line] (inloop_no) |- (inloop_yes);
+    \path [line] (inloop_yes.west) -- ($(inloop_yes.west) + (-0.7, 0)$) |- (loop_condition.west);
+
+    % возвращаемся на условие цикла
+    % \path[draw] (inloop_no.south) -- ++ (0, -0.5) coordinate (N2) -| coordinate (N1) (inloop_yes.south);
+    % \draw ($ (N1) ! .5 ! (N2) $) -- ++ (0, -0.5) -| ($(inloop_no.east) + (0.7,0)$) [line] |- (loop_condition.east) ;
+
+\end{tikzpicture}
+
+\small{Примечание: $a \div b$ --- целая часть от деления $a$ на $b$}
+
+\vspace{1cm}
+
+\begin{tabular}[c]{c|c|c|c|c|c}
+\textbf{№} & \textbf{действие} & $t$ & $k$ & \textbf{$res$}\\\hline
+1 & Начало & 4 & 3 & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\\hline
+  &        &   &   & & \\
+\end{tabular}
