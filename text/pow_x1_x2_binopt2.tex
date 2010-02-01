@@ -4,7 +4,7 @@
  \item \label{pow_x1_x2_binopt2_loop_cond} Если $x_2=0$ тогда завершить. Результат --- $result$
  \item Иначе:
  \begin{enumerate}
-  \item Если $x$ не делится на 2 ($x_2 \mod 2 = 1$), тогда $result = result \cdot x_1$
+  \item Если $x_2$ не делится на 2 ($x_2 \mod 2 = 1$), тогда $result = result \cdot x_1$
   \item $x_2 = x_2 \div 2$ (целая часть от деления на 2), $x_1 = x_1 \cdot x_1$
  \end{enumerate}
  \item Перейти к шагу \ref{pow_x1_x2_binopt2_loop_cond}
